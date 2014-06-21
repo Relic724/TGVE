@@ -6,3 +6,4 @@
 package com.iteag.multiview;
 
 import org.netbeans.api.templates.TemplateRegistration;
+// yeah, just added an import
