@@ -2,7 +2,7 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.iteag.multiview;
+package com.iteag.tgvefiletype;
 
 import java.io.IOException;
 import org.netbeans.core.spi.multiview.MultiViewElement;
@@ -21,16 +21,16 @@ import org.openide.util.NbBundle.Messages;
 import org.openide.windows.TopComponent;
 
 @Messages({
-    "LBL_TGVEmv_LOADER=Files of TGVEmv"
+    "LBL_Tgve_LOADER=Files of Tgve"
 })
 @MIMEResolver.ExtensionRegistration(
-        displayName = "#LBL_TGVEmv_LOADER",
+        displayName = "#LBL_Tgve_LOADER",
         mimeType = "text/x-tgve",
-        extension = {".tgve"})
+        extension = {"tgve", "TGVE"})
 @DataObject.Registration(
         mimeType = "text/x-tgve",
-        iconBase = "com/iteag/multiview/GUI_Icon.png",
-        displayName = "#LBL_TGVEmv_LOADER",
+        iconBase = "com/iteag/tgvefiletype/GUI_Icon.png",
+        displayName = "#LBL_Tgve_LOADER",
         position = 300)
 @ActionReferences({
     @ActionReference(
@@ -84,9 +84,9 @@ import org.openide.windows.TopComponent;
             @ActionID(category = "System", id = "org.openide.actions.PropertiesAction"),
             position = 1400)
 })
-public class TGVEmvDataObject extends MultiDataObject {
+public class TgveDataObject extends MultiDataObject {
 
-    public TGVEmvDataObject(FileObject pf, MultiFileLoader loader) throws DataObjectExistsException, IOException {
+    public TgveDataObject(FileObject pf, MultiFileLoader loader) throws DataObjectExistsException, IOException {
         super(pf, loader);
         registerEditor("text/x-tgve", true);
     }
@@ -97,13 +97,13 @@ public class TGVEmvDataObject extends MultiDataObject {
     }
 
     @MultiViewElement.Registration(
-            displayName = "#LBL_TGVEmv_EDITOR",
-            iconBase = "com/iteag/multiview/GUI_Icon.png",
+            displayName = "#LBL_Tgve_EDITOR",
+            iconBase = "com/iteag/tgvefiletype/GUI_Icon.png",
             mimeType = "text/x-tgve",
             persistenceType = TopComponent.PERSISTENCE_ONLY_OPENED,
-            preferredID = "TGVEmv",
+            preferredID = "Tgve",
             position = 1000)
-    @Messages("LBL_TGVEmv_EDITOR=Source")
+    @Messages("LBL_Tgve_EDITOR=Source")
     public static MultiViewEditorElement createEditor(Lookup lkp) {
         return new MultiViewEditorElement(lkp);
     }

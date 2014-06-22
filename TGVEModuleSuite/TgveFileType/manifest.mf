@@ -1,0 +1,5 @@
+Manifest-Version: 1.0
+OpenIDE-Module: com.iteag.tgvefiletype
+OpenIDE-Module-Localizing-Bundle: com/iteag/tgvefiletype/Bundle.properties
+OpenIDE-Module-Specification-Version: 1.0
+

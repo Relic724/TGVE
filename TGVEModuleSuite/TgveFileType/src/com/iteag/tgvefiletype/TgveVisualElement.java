@@ -2,7 +2,7 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.iteag.multiview;
+package com.iteag.tgvefiletype;
 
 import javax.swing.Action;
 import javax.swing.JComponent;
@@ -17,28 +17,28 @@ import org.openide.util.NbBundle.Messages;
 import org.openide.windows.TopComponent;
 
 @MultiViewElement.Registration(
-        displayName = "#LBL_TGVEmv_VISUAL",
-        iconBase = "com/iteag/multiview/GUI_Icon.png",
+        displayName = "#LBL_Tgve_VISUAL",
+        iconBase = "com/iteag/tgvefiletype/GUI_Icon.png",
         mimeType = "text/x-tgve",
         persistenceType = TopComponent.PERSISTENCE_NEVER,
-        preferredID = "TGVEmvVisual",
+        preferredID = "TgveVisual",
         position = 2000)
-@Messages("LBL_TGVEmv_VISUAL=Visual")
-public final class TGVEmvVisualElement extends JPanel implements MultiViewElement {
+@Messages("LBL_Tgve_VISUAL=Relative")
+public final class TgveVisualElement extends JPanel implements MultiViewElement {
 
-    private TGVEmvDataObject obj;
+    private TgveDataObject obj;
     private JToolBar toolbar = new JToolBar();
     private transient MultiViewElementCallback callback;
 
-    public TGVEmvVisualElement(Lookup lkp) {
-        obj = lkp.lookup(TGVEmvDataObject.class);
+    public TgveVisualElement(Lookup lkp) {
+        obj = lkp.lookup(TgveDataObject.class);
         assert obj != null;
         initComponents();
     }
 
     @Override
     public String getName() {
-        return "TGVEmvVisualElement";
+        return "TgveVisualElement";
     }
 
     /**
