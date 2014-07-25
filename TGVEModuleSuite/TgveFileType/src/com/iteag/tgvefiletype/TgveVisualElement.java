@@ -29,7 +29,8 @@ public final class TgveVisualElement extends JPanel implements MultiViewElement 
     private TgveDataObject obj;
     private JToolBar toolbar = new JToolBar();
     private transient MultiViewElementCallback callback;
-
+    
+    
     public TgveVisualElement(Lookup lkp) {
         obj = lkp.lookup(TgveDataObject.class);
         assert obj != null;
@@ -89,11 +90,13 @@ public final class TgveVisualElement extends JPanel implements MultiViewElement 
 
     @Override
     public void componentClosed() {
+        
     }
 
     @Override
     public void componentShowing() {
-    }
+       
+     }
 
     @Override
     public void componentHidden() {
