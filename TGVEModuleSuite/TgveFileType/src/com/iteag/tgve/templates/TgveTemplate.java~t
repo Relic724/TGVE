@@ -1,0 +1,9 @@
+${package}
+
+/**
+ *
+ * @author charles
+ */
+public class ${name} {
+    
+}

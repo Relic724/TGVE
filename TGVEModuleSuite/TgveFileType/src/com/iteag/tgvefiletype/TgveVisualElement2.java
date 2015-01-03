@@ -31,11 +31,14 @@ import org.openide.util.Lookup;
 import org.openide.util.NbBundle.Messages;
 import org.openide.windows.TopComponent;
 import java.awt.Component;
+import java.awt.EventQueue;
 import java.awt.event.ComponentAdapter;
 import java.awt.event.ComponentEvent;
+import java.util.concurrent.Callable;
+import org.netbeans.api.project.Project;
 
-import tonegod.gui.core.Screen;
-import tonegod.gui.controls.windows.Window;
+
+
 
 /**
  *
@@ -51,16 +54,15 @@ import tonegod.gui.controls.windows.Window;
 @Messages("LBL_Tgve_VISUAL2=Absolute")
 public class TgveVisualElement2 extends JPanel implements MultiViewElement, 
   SceneListener{
-    
     private TgveDataObject obj;
     private JToolBar toolbar = new JToolBar();
     private SceneRequest request;
     private ProjectAssetManager pam;
-    private Node absoluteNode = new Node("absoluteNode");
+    private Node absoluteNode = new Node("Absolute Node");
     private transient MultiViewElementCallback callback;
     private Component oglCanvas;
+    private Geometry tempGeo;
     private static final Logger logger = Logger.getLogger(TgveVisualElement2.class.getName());
-    private Screen screen;
 
     private static ComponentAdapter tgveComponentListener = new ComponentAdapter(){
         @Override
@@ -121,20 +123,8 @@ public class TgveVisualElement2 extends JPanel implements MultiViewElement,
     @Override
     public void componentOpened() {
        // TODO: Initialize and fire up the JME3... properly
-        pam = new ProjectAssetManager();
-        SceneApplication.getApplication().addSceneListener(this);
-        
-       // TODO: Load Tonegod Objects from TgveDataObject
-        Box boxMesh = new Box(1,1,1);
-        Geometry box = new Geometry("blue box", boxMesh);
-        Material material = new Material(SceneApplication.getApplication().getAssetManager(), "Common/MatDefs/Misc/Unshaded.j3md");
-        material.setColor("Color", ColorRGBA.Blue);
-        box.setMaterial(material);
-        absoluteNode.attachChild(box);
-        request = new SceneRequest(this, absoluteNode, pam);
-
-        logger.info("TGVE Component Opened");
-        
+          logger.info("TGVE Component Opened");
+     
     }
 
     @Override
@@ -146,17 +136,37 @@ public class TgveVisualElement2 extends JPanel implements MultiViewElement,
     @Override
     public void componentShowing() {
         // TODO: App is running, set the surface; if paused, unpause
-        try {
-            oglCanvas = SceneApplication.getApplication().getMainPanel();
-            oglCanvas.setFocusable(false);
-            add(oglCanvas);
-        } catch (Exception e) { 
-           SceneApplication.showStartupErrorMessage(e); 
-        } catch (Error err) { 
-             SceneApplication.showStartupErrorMessage(err); 
-        } 
+        if(request == null){
+            SceneApplication.getApplication().addSceneListener(this);
+           
+           // TODO: Load Tonegod Objects from TgveDataObject
+            Box boxMesh = new Box(1,1,1);
+            Geometry box = new Geometry("blue box", boxMesh);
+            Material material = new Material(SceneApplication.getApplication().getAssetManager(), "Common/MatDefs/Misc/Unshaded.j3md");
+            material.setColor("Color", ColorRGBA.Blue);
+            box.setMaterial(material);
+            tempGeo = box;
+            request = new SceneRequest(this, absoluteNode, null);
+        }
+
+            SceneApplication.getApplication().openScene(request);
+     
+        
+        EventQueue.invokeLater(new Runnable(){
+            @Override
+            public void run() {
+                try {
+                    oglCanvas = SceneApplication.getApplication().getMainPanel();
+                    oglCanvas.setFocusable(false);
+                    add(oglCanvas);
+                } catch (Exception e) { 
+                   SceneApplication.showStartupErrorMessage(e); 
+                } catch (Error err) { 
+                     SceneApplication.showStartupErrorMessage(err); 
+                } 
+            }
+        });
     
-        SceneApplication.getApplication().openScene(request);
         logger.info("TGVE Component Showing");
     }
 
@@ -198,15 +208,8 @@ public class TgveVisualElement2 extends JPanel implements MultiViewElement,
     @Override
     public void sceneOpened(SceneRequest theSceneRequest) {
         if(theSceneRequest.getRequester() == this){
-            screen = new Screen(SceneApplication.getApplication());
-            SceneApplication.getApplication().getGuiNode().addControl(screen);
-            Window win = new Window(screen, "Sample Window", new Vector2f(10,10));
-            win.setText("t0neg0d GUI Window");
-            win.setTextVAlign(BitmapFont.VAlign.Center);
-            win.setTextAlign(BitmapFont.Align.Center);
-            screen.addElement(win);
-            
-            logger.info("TGVE recieved a request");
+            absoluteNode.attachChild(tempGeo);
+             logger.info("TGVE recieved a request");
             
         }
     }
@@ -214,8 +217,7 @@ public class TgveVisualElement2 extends JPanel implements MultiViewElement,
     @Override
     public void sceneClosed(SceneRequest theSceneRequest) {
         if(theSceneRequest.getRequester() == this){
-            SceneApplication.getApplication().getGuiNode().removeControl(screen);
-            screen = null;
+            absoluteNode.detachChild(tempGeo);
             logger.info("TGVE recieved a request to Close");
         }
     }

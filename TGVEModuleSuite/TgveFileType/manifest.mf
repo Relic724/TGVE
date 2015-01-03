@@ -1,5 +1,10 @@
 Manifest-Version: 1.0
 OpenIDE-Module: com.iteag.tgvefiletype
+OpenIDE-Module-Implementation-Version: 1
+OpenIDE-Module-Layer: com/iteag/tgvefiletype/layer.xml
 OpenIDE-Module-Localizing-Bundle: com/iteag/tgvefiletype/Bundle.properties
-OpenIDE-Module-Specification-Version: 1.0
-
+Comment:    //OpenIDE-Module-Package-Dependencies tonegod.gui
+    //OpenIDE-Module-Package-Dependency-Message 
+    This Editor requires the T0neG0d Gui module to be installed for 
+    it to work correctly. Make sure to look for tonegod.gui in the 
+    installable modules under Tools/Plugins/Available Plugins.

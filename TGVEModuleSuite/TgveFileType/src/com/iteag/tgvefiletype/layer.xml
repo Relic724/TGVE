@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE filesystem PUBLIC "-//NetBeans//DTD Filesystem 1.2//EN" "http://www.netbeans.org/dtds/filesystem-1_2.dtd">
+<filesystem>
+    <folder name="Loaders">
+        <folder name="text">
+            <folder name="x-tgve">
+                <folder name="Factories">
+                    <file name="com-iteag-tgvefiletype-TgveMultiFileLoader.instance">
+                        <!-- name="com-iteag-tgvefiletype-TgveMultiFileLoader.instance" -->
+                        <attr name="dataObjectClass" stringvalue="com.iteag.tgvefiletype.TgveDataObject"/>
+                        <attr name="iconBase" stringvalue="com/iteag/tgvefiletype/GUI_Icon.png"/>
+                        <attr name="displayName" stringvalue="T0neG0d VisEdit file"/>
+                        <attr name="position" intvalue="400"/>
+                        <attr name="mimeType" stringvalue="text/x-tgve"/>
+                    </file>
+                </folder>
+            </folder>
+            <folder name="x-java">
+                <folder name="Factories">
+                        <file name="com-iteag-tgvefiletype-TgveMultiFileLoader.instance">
+                        <!-- name="com-iteag-tgvefiletype-TgveMultiFileLoader.instance" -->
+                        <attr name="dataObjectClass" stringvalue="com.iteag.tgvefiletype.TgveDataObject"/>
+                        <attr name="iconBase" stringvalue="com/iteag/tgvefiletype/GUI_Icon.png"/>
+                        <attr name="displayName" stringvalue="T0neG0d VisEdit file"/>
+                        <attr name="position" intvalue="400"/>
+                        <attr name="mimeType" stringvalue="text/x-tgve"/>
+                    </file>
+                </folder>
+            </folder>
+        </folder>
+        <folder name="application">
+            <folder name="jme3model">
+                <folder name="Factories">
+                        <file name="com-iteag-tgvefiletype-TgveMultiFileLoader.instance">
+                        <!-- name="com-iteag-tgvefiletype-TgveMultiFileLoader.instance" -->
+                        <attr name="dataObjectClass" stringvalue="com.iteag.tgvefiletype.TgveDataObject"/>
+                        <attr name="iconBase" stringvalue="com/iteag/tgvefiletype/GUI_Icon.png"/>
+                        <attr name="displayName" stringvalue="T0neG0d VisEdit file"/>
+                        <attr name="position" intvalue="400"/>
+                        <attr name="mimeType" stringvalue="text/x-tgve"/>
+                    </file>
+                </folder>
+            </folder>
+        </folder>
+    </folder>
+    <folder name="Services">
+        <folder name="MIMEResolver">
+            <file name="com-iteag-tgvefiletype-TgveDataObject-Extension.xml">
+                <!--com.iteag.tgvefiletype.TgveDataObject-->
+                <attr methodvalue="org.openide.filesystems.MIMEResolver.create" name="instanceCreate"/>
+                <attr name="instanceClass" stringvalue="org.openide.filesystems.MIMEResolver"/>
+                <attr name="mimeType" stringvalue="text/x-tgve"/>
+                <attr name="ext.0" stringvalue="tgve"/>
+                <attr name="ext.1" stringvalue="TGVE"/>
+                <attr bundlevalue="com.iteag.tgvefiletype.Bundle#LBL_Tgve_LOADER" name="displayName"/>
+            </file>
+        </folder>
+    </folder>
+    <folder name="Editors">
+        <folder name="text">
+            <folder name="x-tgve">
+                <folder name="MultiView">
+                    <file name="com-iteag-tgvefiletype-TgveDataObject-createEditor.instance">
+                        <!--com.iteag.tgvefiletype.TgveDataObject.createEditor(org.openide.util.Lookup)-->
+                        <attr methodvalue="org.netbeans.core.spi.multiview.MultiViewFactory.createMultiViewDescription" name="instanceCreate"/>
+                        <attr name="instanceClass" stringvalue="org.netbeans.core.multiview.ContextAwareDescription"/>
+                        <attr name="class" stringvalue="com.iteag.tgvefiletype.TgveDataObject"/>
+                        <attr bundlevalue="com.iteag.tgvefiletype.Bundle#LBL_Tgve_EDITOR" name="displayName"/>
+                        <attr name="iconBase" stringvalue="com/iteag/tgvefiletype/GUI_Icon.png"/>
+                        <attr name="preferredID" stringvalue="Tgve"/>
+                        <attr intvalue="1" name="persistenceType"/>
+                        <attr intvalue="1000" name="position"/>
+                        <attr name="method" stringvalue="createEditor"/>
+                        <attr boolvalue="true" name="sourceview"/>
+                    </file>
+                    <file name="com-iteag-tgvefiletype-TgveVisualElement.instance">
+                        <!--com.iteag.tgvefiletype.TgveVisualElement-->
+                        <attr methodvalue="org.netbeans.core.spi.multiview.MultiViewFactory.createMultiViewDescription" name="instanceCreate"/>
+                        <attr name="instanceClass" stringvalue="org.netbeans.core.multiview.ContextAwareDescription"/>
+                        <attr name="class" stringvalue="com.iteag.tgvefiletype.TgveVisualElement"/>
+                        <attr bundlevalue="com.iteag.tgvefiletype.Bundle#LBL_Tgve_VISUAL" name="displayName"/>
+                        <attr name="iconBase" stringvalue="com/iteag/tgvefiletype/GUI_Icon.png"/>
+                        <attr name="preferredID" stringvalue="TgveVisual"/>
+                        <attr intvalue="2" name="persistenceType"/>
+                        <attr intvalue="2000" name="position"/>
+                    </file>
+                    <file name="com-iteag-tgvefiletype-TgveVisualElement2.instance">
+                        <!--com.iteag.tgvefiletype.TgveVisualElement2-->
+                        <attr methodvalue="org.netbeans.core.spi.multiview.MultiViewFactory.createMultiViewDescription" name="instanceCreate"/>
+                        <attr name="instanceClass" stringvalue="org.netbeans.core.multiview.ContextAwareDescription"/>
+                        <attr name="class" stringvalue="com.iteag.tgvefiletype.TgveVisualElement2"/>
+                        <attr bundlevalue="com.iteag.tgvefiletype.Bundle#LBL_Tgve_VISUAL2" name="displayName"/>
+                        <attr name="iconBase" stringvalue="com/iteag/tgvefiletype/GUI_Icon.png"/>
+                        <attr name="preferredID" stringvalue="TgveVisual"/>
+                        <attr intvalue="2" name="persistenceType"/>
+                        <attr intvalue="3000" name="position"/>
+                    </file>
+                </folder>
+            </folder>
+        </folder>
+    </folder>
+</filesystem>
